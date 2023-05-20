@@ -1,12 +1,13 @@
 import Image from "next/image";
 import React from "react";
-import {SearchIcon} from "@heroicons/react/outline"
+import {SearchIcon, PlusCircleIcon} from "@heroicons/react/outline"
+import {HomeIcon} from "@heroicons/react/solid";
 
 
 export default function Header(){
     return(
     <div>
-        <div className="flex items-center justify-between max-w-6xl">
+        <div className="flex items-center justify-between max-w-6xl mx-4 xl:mx-auto">
             <div className="cursor-pointer h-24 w-24 relative hidden lg:inline-grid">
                 <Image  src="http://www.jennexplores.com/wp-content/uploads/2015/09/Instagram_logo_black.png"
                 layout='fill'
@@ -28,7 +29,12 @@ export default function Header(){
                 </div>
                 <input type="text" placeholder="Search" className="bg-gray-50 pl-10 border-gray-500 text-sm focus-ring-black focus-border-black rounded-md"/>
             </div>
-            <h1>Right sides</h1>
+            <div className="flex space-x-4 items-center">
+                <HomeIcon className="hidden md:inline-flex h-6 cursor-pointer hover:scale-125 transitionhttps://static.skillshare.com/uploads/users/350301760/user-image-large.jpg?753816048-transform duraion-200 ease-out" />
+                <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-tranform duration-200 ease-out" />
+                <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2710623/profile-images/1655538932" alt="user-image" className="h-10 rounded-full cursor-pointer"/>
+            </div>
+
         </div>
     </div>
     )
