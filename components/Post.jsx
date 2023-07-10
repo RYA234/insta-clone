@@ -1,7 +1,7 @@
 // import React from "react";
-import { DotsCircleHorizontalIcon, DotsHorizontalIcon } from "@heroicons/react/outline"
+import { DotsCircleHorizontalIcon, DotsHorizontalIcon,HeartIcon,ChatIcon,BookmarkIcon} from "@heroicons/react/outline"
 
-export default function Poset({img,userImg,caption,username,id}){
+export default function Post({img,userImg,caption,username,id}){
     return(
         <div className="bg-white my-7 border rounded-md">
             <div className="flex items-center p-5">
@@ -10,6 +10,13 @@ export default function Poset({img,userImg,caption,username,id}){
                 <DotsHorizontalIcon className="h-5" />
             </div>
             <img className="object-cover w-full" src={img} alt=""/>
+            <div className="flex justify-between px-4 pt-4">
+                <div className="flex space-x-4">
+                    <HeartIcon className="btn"/>
+                    <ChatIcon className="btn"/>
+                </div>
+                <BookmarkIcon className="btn"/>
+            </div>
         </div>
     )
 }
