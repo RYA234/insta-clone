@@ -2,7 +2,7 @@ import Header from '../components/Header'
 import Head from 'next/head'
 import Image from 'next/image'
 import Feed from "../components/Feed";
-
+import UploadModal from '../components/UploadModal';
 export default function Home() {
   return (
     <div>
@@ -18,6 +18,7 @@ export default function Home() {
         <Feed />
 
       {/* Modal */}
+      <UploadModal />
     </div>
   )
 }
