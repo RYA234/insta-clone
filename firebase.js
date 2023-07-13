@@ -1,7 +1,7 @@
 
-import {initializeApp,getApp,getApps} from "firebase/app";
-import {getFirestore} from "firebase/firestore"
-import {getStorage} from "firebase/storage"
+import {initializeApp,getApp,getApps} from "@firebase/app";
+import {getFirestore} from "@firebase/firestore";
+import {getStorage} from "@firebase/storage";
 
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -9,11 +9,12 @@ const firebaseConfig = {
     projectId: process.env.FIREBASE_PROJECT_ID,
     storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.FIREBASE_MESSAGE_SENDER_ID,
-    appId: process.env.FIREBASE_APP_ID
+    appId: process.env.FIREBASE_APP_ID,
 };
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const db = getFirestore();
-const storage = getStorage();
+const db = getFirestore(app);
+const storage = getStorage(app);
+// storeのルールを設定する必要がある
 
-export {app, db, storage}
+export {app, db, storage};
