@@ -1,38 +1,42 @@
+
+import React from 'react';
 import Post from "./Post";
+import {useEffect,useState} from "react";
+import {collection,onSnapshot, orderBy, query,getDocs} from "firebase/firestore";
+import {db} from "../firebase";
+import { getMetadata } from "firebase/storage";
 
-export default function Posts(){
-const posts =  [
-    {
-        id: "1",
-        username: "RYA234",
-        userImg: "https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2710623/profile-images/1655538932",
-        img: "https://images.unsplash.com/photo-1643818507403-a3ed10760d16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
-        caption: "Nice picture"
+export default   function Posts(){
+    const [posts, setPosts] = useState([]);
+    const [abc,setAbc]  = useState(0);
+    
+        const fetchData = async () => {
+            const q = query(collection(db, "posts"), orderBy("timestamp", "desc"));
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.id, " => ", doc.data());
+            });
+            const postData = querySnapshot.docs.map((doc) => doc.data());
+            setPosts(postData);
+            console.log(posts);
 
-    },
-    {
-        id: "2",
-        username: "RYA234",
-        userImg: "https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2710623/profile-images/1655538932",
-        img: "https://images.unsplash.com/photo-1643806720662-f9bc01be4e83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-        caption: "New picture from my city"
-
-    }
-]
+            console.log(postData);
+        };
+        fetchData();       
     return(
         <div>
-            {posts.map(post=>(
+            aaa
+            {posts.map((post)=>(
                 <Post
-                key={post.id}
-                id={post.id}
-                username={post.username}
-                userImg={post.userImg}
-                img={post.img}
-                caption={post.caption}
+                    key={post.id}
+                    id={post.id}
+                    username={post.username}
+                    userImg={post.profileImg}
+                    img={post.image}
+                    caption={post.caption}
                 />
             ))}
-
         </div>
-    )
-
+    );
 }
