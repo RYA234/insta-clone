@@ -17,7 +17,7 @@ export default   function Posts(){
               // doc.data() is never undefined for query doc snapshots
               console.log(doc.id, " => ", doc.data());
             });
-            const postData = querySnapshot.docs.map((doc) => doc.data());
+            const postData = querySnapshot.docs.map((doc) => doc);
             setPosts(postData);
             console.log(posts);
 
@@ -26,15 +26,14 @@ export default   function Posts(){
         fetchData();       
     return(
         <div>
-            aaa
             {posts.map((post)=>(
                 <Post
                     key={post.id}
                     id={post.id}
-                    username={post.username}
-                    userImg={post.profileImg}
-                    img={post.image}
-                    caption={post.caption}
+                    username={post.data().username}
+                    userImg={post.data().profileImg}
+                    img={post.data().image}
+                    caption={post.data().caption}
                 />
             ))}
         </div>
