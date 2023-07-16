@@ -15,13 +15,13 @@ export default   function Posts(){
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
               // doc.data() is never undefined for query doc snapshots
-              console.log(doc.id, " => ", doc.data());
+            //   console.log(doc.id, " => ", doc.data());
             });
             const postData = querySnapshot.docs.map((doc) => doc);
             setPosts(postData);
-            console.log(posts);
+            // console.log(posts);
 
-            console.log(postData);
+            // console.log(postData);
         };
         fetchData();       
     return(

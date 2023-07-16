@@ -20,8 +20,6 @@ export default  function Stories(){
         },[]);
         console.log(storyUsers.results);
 
-        console.log("aa");
-    
     // const randomUsersResponse = await fetch(
     //     "https://randomuser.me/api/?results=20&inc=name,login,picture"
     //   ).then((res) => res.json());
