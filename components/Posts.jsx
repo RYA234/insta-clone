@@ -19,9 +19,6 @@ export default   function Posts(){
             });
             const postData = querySnapshot.docs.map((doc) => doc);
             setPosts(postData);
-            // console.log(posts);
-
-            // console.log(postData);
         };
         fetchData();       
     return(
